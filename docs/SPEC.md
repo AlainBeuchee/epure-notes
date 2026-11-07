@@ -1,6 +1,6 @@
 # Cahier des charges — Épure Notes
 
-> Version 0.2 du 28 octobre 2026. Statut : **brouillon à valider**.
+> Version 0.3 du 7 novembre 2026. Statut : **brouillon à valider**.
 > Documents associés : `ROADMAP.md` (jalons), `DECISIONS.md` (décisions `DEC-xxxx`), `CHARTE.md` (charte graphique et fonctionnelle, Partie A commune aux projets d'Alain).
 > En cas d'écart entre ce document et le code, l'écart est signalé et tranché ; ce document n'est pas modifié pour s'aligner sur le code.
 > **[À DÉCIDER]** : point non tranché, à consigner dans `DECISIONS.md` avant toute implémentation.
@@ -131,6 +131,7 @@ Réglages limités au strict minimum, mémorisés dans DataStore (Preferences) :
 - **F-8.4** « À propos » (F-15).
 - **F-8.5** Écran allumé pendant l'écriture : **[À DÉCIDER]** (F-16).
 - **F-8.6** « Sauvegarde » et « Restaurer depuis un dossier » (F-18), avec l'avertissement en italique tant que la sauvegarde est désactivée. Disponibles dès le jalon 2, avant les autres réglages.
+- **F-8.7** **Tâches** : « Tâches : simple » (par défaut) / « Tâches : kanban » (DEC-0041). Ne change que l'affichage de la liste (F-12.8).
 
 *Critères* : chaque réglage s'applique immédiatement et survit à un redémarrage ; avec « Effacer : non », la touche Retour arrière, « Couper » et une correction automatique ne retirent aucun caractère.
 
@@ -162,10 +163,11 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 - **F-12.1** **Une seule** liste de tâches, écran « Tâches ».
 - **F-12.2** Champ en haut « Ajouter une tâche » ; Entrée valide la tâche et garde le champ ouvert.
 - **F-12.3** Appui court sur une tâche : la marque faite / à faire. Une tâche faite passe en `TextSecondary` et en bas de la liste (pas de case à cocher dessinée ni de barré : **[À DÉCIDER]**).
-- **F-12.4** Appui long : menu « Modifier », « Supprimer ».
-- **F-12.5** Action « Effacer les tâches faites » (irréversible → confirmation).
+- **F-12.4** Appui long : menu « Modifier », « Supprimer ». En mode kanban (F-12.8), le menu commence par les quatre états « À faire », « En cours », « Bloquée », « Terminée », séparés par un trait.
+- **F-12.5** Action « Effacer les tâches faites » (irréversible → confirmation). Efface uniquement les tâches terminées, dans les deux modes.
 - **F-12.6** Liste vide : « Aucune tâche ».
-- **F-12.7** Stockage : **[À DÉCIDER]** (DEC-0014). Proposition : un fichier `taches.md` au format liste Markdown (`- [ ] …` / `- [x] …`), lisible tel quel s'il est partagé.
+- **F-12.7** Stockage (DEC-0014, DEC-0041) : un fichier `taches.md`, une tâche par ligne : `- [ ] …` à faire, `- [>] …` en cours, `- [!] …` bloquée, `- [x] …` terminée. Format unique pour les deux modes ; lisible tel quel s'il est partagé. `[>]` et `[!]` ne sont pas des cases Markdown standard.
+- **F-12.8** Mode kanban (DEC-0041) : liste unique, regroupée par état dans l'ordre à faire, en cours, bloquée, terminée. Un en-tête affiché une seule fois devant chaque groupe ; un groupe vide n'a pas d'en-tête. Mode simple : les tâches « en cours » et « bloquées » s'affichent comme « à faire », sans changer d'état. Changer de mode ne modifie aucune tâche.
 
 ### F-13 — Ajouter une ligne d'une note aux tâches (jalon 5)
 
@@ -178,7 +180,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 
 ### F-14 — Tâches sur l'écran d'accueil (jalon 6, conditionnel)
 
-- **F-14.1** Widget affichant les tâches à faire, texte seul, fond noir ; toucher → ouvre l'écran « Tâches ».
+- **F-14.1** Widget affichant les tâches non terminées (à faire, en cours, bloquées), dans les deux modes, texte seul, fond noir ; toucher → ouvre l'écran « Tâches ».
 - **F-14.2** Cocher une tâche depuis le widget : **[À DÉCIDER]**.
 - **F-14.3** Nécessite probablement la bibliothèque Jetpack Glance (DEC-0016, à justifier au jalon 6) ; vérifier qu'elle n'ajoute aucune permission.
 - **F-14.4** **[À VÉRIFIER]** : le launcher Épure accueille-t-il des widgets ? Si non, le widget ne sera visible qu'avec le launcher One UI ; alternative possible : raccourci d'app (appui long sur l'icône → « Tâches »), qui ne demande aucune bibliothèque.
@@ -301,3 +303,4 @@ Tranchés le 28/10/2026 : identité (DEC-0001), stockage (DEC-0007), sauvegarde 
 
 - 0.1 (28/10/2026) : première version, à partir du brief du 28/10/2026, des captures de freewrite (Android) et de `CHARTE.md` (Partie A 1.0).
 - 0.2 (28/10/2026) : décisions DEC-0007, 0008, 0009, 0013 et 0019 ; ajout de F-18 (sauvegarde et restauration optionnelles).
+- 0.3 (07/11/2026) : mode simple ou kanban des tâches (DEC-0041) ; F-8.7, F-12.4, F-12.5, F-12.7, F-12.8 et F-14.1 mis à jour.
