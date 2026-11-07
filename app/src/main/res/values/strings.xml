@@ -60,6 +60,12 @@
     <string name="settings_theme_day">Thème : Jour</string>
     <string name="settings_deletion_on">Effacer : oui</string>
     <string name="settings_deletion_off">Effacer : non</string>
+    <string name="settings_tasks_simple">Tâches : simple</string>
+    <string name="settings_tasks_kanban">Tâches : kanban</string>
+    <string name="task_state_todo">À faire</string>
+    <string name="task_state_doing">En cours</string>
+    <string name="task_state_blocked">Bloquée</string>
+    <string name="task_state_done">Terminée</string>
     <string name="settings_text_size">Taille du texte : %1$d sp</string>
     <string name="settings_restore">Restaurer depuis un dossier</string>
     <string name="restore_none">Aucune note trouvée dans ce dossier.</string>

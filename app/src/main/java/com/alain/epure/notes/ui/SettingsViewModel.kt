@@ -58,6 +58,14 @@ class SettingsViewModel(
         }
     }
 
+    // Tâches en mode simple ou kanban (DEC-0041) : simple par défaut.
+    val tasksKanban: StateFlow<Boolean> = settings.tasksKanban
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
+    fun toggleTasksKanban() {
+        viewModelScope.launch { settings.setTasksKanban(!tasksKanban.value) }
+    }
+
     // « Effacer : oui » ou « non » (SPEC F-8.3).
     val deletionAllowed: StateFlow<Boolean> = settings.deletionAllowed
         .stateIn(viewModelScope, SharingStarted.Eagerly, true)

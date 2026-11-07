@@ -56,7 +56,15 @@ class SettingsStore(context: Context) {
         dataStore.edit { prefs -> prefs[LOCK_SCREEN_TASKS] = enabled }
     }
 
+    // Tâches en mode kanban (true) ou simple (false, par défaut) : DEC-0041.
+    val tasksKanban: Flow<Boolean> = dataStore.data.map { it[TASKS_KANBAN] ?: false }
+
+    suspend fun setTasksKanban(kanban: Boolean) {
+        dataStore.edit { prefs -> prefs[TASKS_KANBAN] = kanban }
+    }
+
     private companion object {
+        val TASKS_KANBAN = booleanPreferencesKey("tasks_kanban")
         val LOCK_SCREEN_TASKS = booleanPreferencesKey("lock_screen_tasks")
         val BACKUP_FOLDER = stringPreferencesKey("backup_folder")
         val TEXT_SIZE = intPreferencesKey("text_size")

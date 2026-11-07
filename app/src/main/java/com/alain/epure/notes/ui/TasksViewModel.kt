@@ -1,34 +1,48 @@
 package com.alain.epure.notes.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.alain.epure.notes.data.SettingsStore
 import com.alain.epure.notes.data.TaskStore
 import com.alain.epure.notes.domain.Task
+import com.alain.epure.notes.domain.TaskState
 import com.alain.epure.notes.domain.formatTasks
 import com.alain.epure.notes.domain.parseTasks
+import com.alain.epure.notes.domain.toggledDone
 import com.alain.epure.notes.system.BackupFolder
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.stateIn
 
 // Liste de tâches unique (SPEC F-12). Chaque changement est enregistré dans `taches.md`, puis recopié si la sauvegarde est active.
 class TasksViewModel(
     private val store: TaskStore,
     private val backup: BackupFolder,
+    settings: SettingsStore,
     private val onChanged: () -> Unit = {}
 ) : ViewModel() {
 
     private val _tasks = MutableStateFlow(parseTasks(store.read()))
     val tasks: StateFlow<List<Task>> = _tasks.asStateFlow()
 
+    // Mode kanban (DEC-0041) : true si le réglage « Tâches : kanban » est activé.
+    val kanban: StateFlow<Boolean> = settings.tasksKanban
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     // Ajoute une tâche à faire ; un texte vide n'ajoute rien (SPEC F-12.2).
     fun add(text: String) {
         val trimmed = text.trim()
         if (trimmed.isEmpty()) return
-        update(_tasks.value + Task(trimmed, done = false))
+        update(_tasks.value + Task(trimmed, TaskState.TODO))
     }
 
     // Marque faite ou à faire (SPEC F-12.3). L'index est celui de la liste enregistrée.
-    fun toggle(index: Int) = edit(index) { it.copy(done = !it.done) }
+    fun toggle(index: Int) = edit(index) { it.toggledDone() }
+
+    // Change l'état d'une tâche en mode kanban (DEC-0041).
+    fun setState(index: Int, state: TaskState) = edit(index) { it.copy(state = state) }
 
     fun rename(index: Int, text: String) {
         val trimmed = text.trim()

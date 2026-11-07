@@ -173,6 +173,10 @@ Décision à trancher : DEC-0016 (widget ou raccourci, bibliothèque).
 
 - [x] Import d'un fichier `.md` partagé depuis « Mes fichiers » → nouvelle note (F-10.4, DEC-0032)
 - [x] Partage depuis « Mes fichiers » : Épure Notes apparaît dans la liste pour un fichier `.md`
+- [x] Réglage « Tâches : simple / kanban » dans Réglages ; mode simple inchangé (DEC-0041)
+- [x] Mode kanban : libellé d'état sur chaque tâche, tri à faire / en cours / bloquée / terminée (DEC-0041)
+- [x] Mode kanban : appui long → « À faire », « En cours », « Bloquée », « Terminée », trait, puis « Modifier », « Supprimer » (DEC-0041)
+- [x] Format `- [>]` (en cours) et `- [!]` (bloquée) lu et conservé ; widget : tâches non terminées (DEC-0041)
 
 ## Avant une éventuelle publication (hors jalons)
 

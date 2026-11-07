@@ -486,7 +486,7 @@
      - `- [x]` terminée
      Le fichier reste donc le même et la copie de sauvegarde (F-18.4) ne change pas. `[>]` et `[!]` ne sont pas des cases Markdown standard : elles restent lisibles en texte brut.
   3. **Mode simple** : `[>]` et `[!]` s'affichent comme « à faire » et ne sont pas modifiées tant que la tâche n'est pas cochée. Appui court : `[ ]` ou `[>]` ou `[!]` devient `[x]` ; `[x]` redevient `[ ]`. Le mode kanban n'est pas nécessaire pour retrouver l'état d'une tâche.
-  4. **Mode kanban** : une liste unique, chaque tâche porte son libellé d'état (« À faire », « En cours », « Bloquée », « Terminée »). Les tâches sont triées dans cet ordre : à faire, en cours, bloquées, terminées en bas (même principe que F-12.3). Pas de filtres en version 1.
+  4. **Mode kanban** : une liste unique, chaque tâche porte son libellé d'état (« À faire », « En cours », « Bloquée », « Terminée »). Les tâches sont triées dans cet ordre : à faire, en cours, bloquées, terminées en bas (même principe que F-12.3). Pas de filtres en version 1. Libellés regroupés : un en-tête par état, affiché une seule fois devant son groupe (non affiché si le groupe est vide).
   5. **Effacer les tâches faites** (F-12.5) supprime uniquement les `[x]`, dans les deux modes, après confirmation.
   6. **Widget** (F-14) : affiche toutes les tâches non terminées (à faire, en cours, bloquées), dans les deux modes.
   7. Changer de mode **ne modifie aucune tâche**.

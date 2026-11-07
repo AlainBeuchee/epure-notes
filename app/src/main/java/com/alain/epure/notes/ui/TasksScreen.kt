@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alain.epure.notes.R
 import com.alain.epure.notes.domain.Task
+import com.alain.epure.notes.domain.TaskState
 import com.alain.epure.notes.domain.displayOrder
 import com.alain.epure.notes.ui.theme.LocalNoteColors
 
@@ -56,6 +57,7 @@ fun TasksScreen(
     onOpenSettings: () -> Unit
 ) {
     val tasks by viewModel.tasks.collectAsState()
+    val kanban by viewModel.kanban.collectAsState()
     var draft by rememberSaveable { mutableStateOf("") }
     var clearDoneAsked by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<Int?>(null) }
@@ -114,16 +116,27 @@ fun TasksScreen(
             }
         } else {
             LazyColumn(modifier = Modifier.weight(1f)) {
-                items(displayOrder(tasks), key = { it }) { index ->
-                    TaskItem(
-                        task = tasks[index],
-                        onToggle = { viewModel.toggle(index) },
-                        onEdit = {
-                            editDraft = tasks[index].text
-                            editing = index
-                        },
-                        onDelete = { viewModel.delete(index) }
-                    )
+                var previousState: TaskState? = null
+                displayOrder(tasks, kanban).forEach { index ->
+                    val task = tasks[index]
+                    // Mode kanban (DEC-0041) : un en-tête par état, affiché une seule fois devant son groupe.
+                    if (kanban && task.state != previousState) {
+                        item(key = "header-${task.state}") { StateHeader(task.state) }
+                    }
+                    previousState = task.state
+                    item(key = index) {
+                        TaskItem(
+                            task = task,
+                            kanban = kanban,
+                            onToggle = { viewModel.toggle(index) },
+                            onSetState = { viewModel.setState(index, it) },
+                            onEdit = {
+                                editDraft = task.text
+                                editing = index
+                            },
+                            onDelete = { viewModel.delete(index) }
+                        )
+                    }
                 }
             }
         }
@@ -216,14 +229,21 @@ fun TasksScreen(
 }
 
 @Composable
-private fun TaskItem(task: Task, onToggle: () -> Unit, onEdit: () -> Unit, onDelete: () -> Unit) {
+private fun TaskItem(
+    task: Task,
+    kanban: Boolean,
+    onToggle: () -> Unit,
+    onSetState: (TaskState) -> Unit,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit
+) {
     var menuOpen by remember { mutableStateOf(false) }
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = task.text,
                 style = MaterialTheme.typography.bodyLarge,
@@ -240,6 +260,19 @@ private fun TaskItem(task: Task, onToggle: () -> Unit, onEdit: () -> Unit, onDel
                     .padding(start = 24.dp, top = 12.dp, bottom = 12.dp)
             )
             DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                // Mode kanban : changement d'état au-dessus du trait (DEC-0041).
+                if (kanban) {
+                    TaskState.entries.forEach { state ->
+                        DropdownMenuItem(
+                            text = { Text(text = stringResource(stateLabel(state))) },
+                            onClick = {
+                                menuOpen = false
+                                onSetState(state)
+                            }
+                        )
+                    }
+                    HorizontalDivider(color = LocalNoteColors.current.textSecondary, thickness = 1.dp)
+                }
                 DropdownMenuItem(
                     text = { Text(text = stringResource(R.string.action_edit)) },
                     onClick = {
@@ -267,4 +300,22 @@ private fun TaskItem(task: Task, onToggle: () -> Unit, onEdit: () -> Unit, onDel
             }
         }
     }
+}
+
+// En-tête d'un groupe d'états en mode kanban (DEC-0041), affiché une seule fois.
+@Composable
+private fun StateHeader(state: TaskState) {
+    Text(
+        text = stringResource(stateLabel(state)),
+        style = MaterialTheme.typography.bodySmall,
+        color = LocalNoteColors.current.textSecondary,
+        modifier = Modifier.padding(start = 24.dp, top = 16.dp, bottom = 4.dp)
+    )
+}
+
+private fun stateLabel(state: TaskState): Int = when (state) {
+    TaskState.TODO -> R.string.task_state_todo
+    TaskState.DOING -> R.string.task_state_doing
+    TaskState.BLOCKED -> R.string.task_state_blocked
+    TaskState.DONE -> R.string.task_state_done
 }

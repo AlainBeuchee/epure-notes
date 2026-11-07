@@ -48,6 +48,7 @@ fun SettingsScreen(
     val textSize by viewModel.textSize.collectAsState()
     val dayTheme by viewModel.dayTheme.collectAsState()
     val deletionAllowed by viewModel.deletionAllowed.collectAsState()
+    val tasksKanban by viewModel.tasksKanban.collectAsState()
     val lockScreenTasks by viewModel.lockScreenTasks.collectAsState()
     var confirmStop by remember { mutableStateOf(false) }
 
@@ -127,6 +128,16 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = viewModel::toggleDeletion)
+                .sizeIn(minHeight = 48.dp)
+                .padding(horizontal = 24.dp, vertical = 12.dp)
+        )
+        Text(
+            text = stringResource(if (tasksKanban) R.string.settings_tasks_kanban else R.string.settings_tasks_simple),
+            style = MaterialTheme.typography.bodyLarge,
+            color = LocalNoteColors.current.textPrimary,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = viewModel::toggleTasksKanban)
                 .sizeIn(minHeight = 48.dp)
                 .padding(horizontal = 24.dp, vertical = 12.dp)
         )

@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
             this,
             viewModelFactory {
                 initializer {
-                    TasksViewModel(container.taskStore, container.backup) { TasksWidget.updateAll(applicationContext) }
+                    TasksViewModel(container.taskStore, container.backup, container.settings) { TasksWidget.updateAll(applicationContext) }
                 }
             }
         )[TasksViewModel::class.java]
