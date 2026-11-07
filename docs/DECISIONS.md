@@ -512,3 +512,16 @@
 - Réversibilité : facile.
 - Références : SPEC F-8.3 ; DEC-0015.
 - **À reporter dans SPEC.md** après validation sur le téléphone : F-8.3.
+
+## DEC-0043 — Clavier Samsung, tâches faites et widget (F-8.3, F-12.3, F-14.2)
+
+- Date : 07/11/2026
+- Statut : **Décidée** le 07/11/2026 (choix d'Alain)
+- Décision :
+  1. **Freewriting et clavier Samsung** : sur le téléphone, « Freewriting : oui » bloque le retour arrière, couper et la correction automatique. Point validé.
+  2. **Tâches faites (F-12.3)** : une tâche faite passe en gris (`TextSecondary`) et descend en bas de la liste, sans case à cocher et sans texte barré. Point validé.
+  3. **Widget (F-14.2)** : on ne coche pas une tâche depuis le widget. Un toucher sur le widget ouvre l'écran « Tâches ».
+- Justification : choix d'Alain, après test sur le téléphone pour le point 1.
+- Réversibilité : facile.
+- Références : SPEC F-8.3, F-12.3, F-14.2 ; DEC-0015, DEC-0042.
+- **À reporter dans SPEC.md** : F-8.3 (clavier vérifié), F-12.3 (plus de [À DÉCIDER]), F-14.2 (décidé).

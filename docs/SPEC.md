@@ -127,7 +127,7 @@ Réglages limités au strict minimum, mémorisés dans DataStore (Preferences) :
 
 - **F-8.1** **Taille du texte** : 12, 14, 16, 18, 20, 22, 24 sp (DEC-0027). Un toucher sur le réglage passe à la valeur suivante (comme « 16px » dans freewrite). Valeur par défaut : **[À DÉCIDER]**, proposition 20 sp. (Le brief parle de « px » : en Android, le texte se mesure en `sp`, qui suit aussi le réglage de taille de police du téléphone.)
 - **F-8.2** **Thème** : « Nuit » (par défaut) ou « Jour » (DEC-0009, décidée). Dérogation à la charte A.5 (thème sombre uniquement). Le thème Jour s'applique à tout l'écran : fond blanc, texte noir. Couleurs exactes à valider sur l'appareil.
-- **F-8.3** **Freewriting** (DEC-0042) : « Freewriting : non » (par défaut) / « Freewriting : oui ». Sous le libellé, en italique 16 sp : « Le texte peut être effacé. » si « non », « Le texte ne peut pas être effacé. » si « oui ». Quand le freewriting est activé, toute suppression de texte est refusée (touche Retour arrière, couper, remplacer une sélection, correction automatique). Mise en œuvre : DEC-0015 ; comportement du clavier Samsung **[À VÉRIFIER]**.
+- **F-8.3** **Freewriting** (DEC-0042) : « Freewriting : non » (par défaut) / « Freewriting : oui ». Sous le libellé, en italique 16 sp : « Le texte peut être effacé. » si « non », « Le texte ne peut pas être effacé. » si « oui ». Quand le freewriting est activé, toute suppression de texte est refusée (touche Retour arrière, couper, remplacer une sélection, correction automatique). Mise en œuvre : DEC-0015 ; comportement du clavier Samsung vérifié sur le téléphone (DEC-0043).
 - **F-8.4** « À propos » (F-15).
 - **F-8.5** Écran allumé pendant l'écriture : **[À DÉCIDER]** (F-16).
 - **F-8.6** « Sauvegarde » et « Restaurer depuis un dossier » (F-18), avec l'avertissement en italique tant que la sauvegarde est désactivée. Disponibles dès le jalon 2, avant les autres réglages.
@@ -162,7 +162,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 
 - **F-12.1** **Une seule** liste de tâches, écran « Tâches ».
 - **F-12.2** Champ en haut « Ajouter une tâche » ; Entrée valide la tâche et garde le champ ouvert.
-- **F-12.3** Appui court sur une tâche : la marque faite / à faire. Une tâche faite passe en `TextSecondary` et en bas de la liste (pas de case à cocher dessinée ni de barré : **[À DÉCIDER]**).
+- **F-12.3** Appui court sur une tâche : la marque faite / à faire. Une tâche faite passe en `TextSecondary` et en bas de la liste (pas de case à cocher dessinée ni de texte barré, DEC-0043).
 - **F-12.4** Appui long : menu « Modifier », « Supprimer ». En mode kanban (F-12.8), le menu commence par les quatre états « À faire », « En cours », « Bloquée », « Terminée », séparés par un trait.
 - **F-12.5** Action « Effacer les tâches faites » (irréversible → confirmation). Efface uniquement les tâches terminées, dans les deux modes.
 - **F-12.6** Liste vide : « Aucune tâche ».
@@ -181,7 +181,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 ### F-14 — Tâches sur l'écran d'accueil (jalon 6, conditionnel)
 
 - **F-14.1** Widget affichant les tâches non terminées (à faire, en cours, bloquées), dans les deux modes, texte seul, fond noir ; toucher → ouvre l'écran « Tâches ».
-- **F-14.2** Cocher une tâche depuis le widget : **[À DÉCIDER]**.
+- **F-14.2** Pas de cochage depuis le widget (DEC-0043) : un toucher ouvre l'écran « Tâches ».
 - **F-14.3** Nécessite probablement la bibliothèque Jetpack Glance (DEC-0016, à justifier au jalon 6) ; vérifier qu'elle n'ajoute aucune permission.
 - **F-14.4** **[À VÉRIFIER]** : le launcher Épure accueille-t-il des widgets ? Si non, le widget ne sera visible qu'avec le launcher One UI ; alternative possible : raccourci d'app (appui long sur l'icône → « Tâches »), qui ne demande aucune bibliothèque.
 
@@ -304,4 +304,4 @@ Tranchés le 28/10/2026 : identité (DEC-0001), stockage (DEC-0007), sauvegarde 
 - 0.1 (28/10/2026) : première version, à partir du brief du 28/10/2026, des captures de freewrite (Android) et de `CHARTE.md` (Partie A 1.0).
 - 0.2 (28/10/2026) : décisions DEC-0007, 0008, 0009, 0013 et 0019 ; ajout de F-18 (sauvegarde et restauration optionnelles).
 - 0.3 (07/11/2026) : mode simple ou kanban des tâches (DEC-0041) ; F-8.7, F-12.4, F-12.5, F-12.7, F-12.8 et F-14.1 mis à jour.
-- 0.3 (07/11/2026, suite) : F-8.3 renommé « Freewriting » avec mention en italique (DEC-0042).
+- 0.3 (07/11/2026, suite) : F-8.3 renommé « Freewriting » avec mention en italique (DEC-0042) ; F-8.3, F-12.3 et F-14.2 précisés (DEC-0043).
