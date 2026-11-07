@@ -323,7 +323,7 @@ private fun StateHeader(state: TaskState) {
         text = stringResource(stateLabel(state)),
         style = MaterialTheme.typography.bodySmall,
         color = LocalNoteColors.current.textSecondary,
-        modifier = Modifier.padding(start = 24.dp, top = 16.dp, bottom = 4.dp)
+        modifier = Modifier.padding(start = 24.dp, top = 32.dp, bottom = 4.dp)
     )
 }
 
