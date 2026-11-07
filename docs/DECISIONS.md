@@ -471,3 +471,30 @@
 - Justification : un seul bouton pour envoyer le texte utile ailleurs, sans ajouter de commande dans la barre (DEC-0034, barre à quatre commandes).
 - Réversibilité : facile.
 - Références : SPEC F-7.2, F-13 ; DEC-0013, DEC-0039. **À reporter dans SPEC.md** après validation sur le téléphone.
+
+## DEC-0041 — Affichage des tâches : simple ou kanban (F-8, F-12, F-14)
+
+- Date : 07/11/2026
+- Statut : **Décidée** le 07/11/2026 (choix d'Alain). Points 2 à 7 : choix proposés par l'assistant, validés par Alain, y compris le menu de changement d'état ci-dessous.
+- Contexte : Alain souhaite pouvoir suivre ses tâches en quatre états (à faire, en cours, bloquée, terminée) sans imposer ce mode à tout le monde. Le format actuel (`- [ ]` / `- [x]`, DEC-0014) reste la base.
+- Décision :
+  1. **Réglage** dans Réglages : « Tâches : simple / kanban ». Par défaut : simple.
+  2. **Un seul format**, lu et écrit dans les deux modes, dans `taches.md` :
+     - `- [ ]` à faire
+     - `- [>]` en cours
+     - `- [!]` bloquée
+     - `- [x]` terminée
+     Le fichier reste donc le même et la copie de sauvegarde (F-18.4) ne change pas. `[>]` et `[!]` ne sont pas des cases Markdown standard : elles restent lisibles en texte brut.
+  3. **Mode simple** : `[>]` et `[!]` s'affichent comme « à faire » et ne sont pas modifiées tant que la tâche n'est pas cochée. Appui court : `[ ]` ou `[>]` ou `[!]` devient `[x]` ; `[x]` redevient `[ ]`. Le mode kanban n'est pas nécessaire pour retrouver l'état d'une tâche.
+  4. **Mode kanban** : une liste unique, chaque tâche porte son libellé d'état (« À faire », « En cours », « Bloquée », « Terminée »). Les tâches sont triées dans cet ordre : à faire, en cours, bloquées, terminées en bas (même principe que F-12.3). Pas de filtres en version 1.
+  5. **Effacer les tâches faites** (F-12.5) supprime uniquement les `[x]`, dans les deux modes, après confirmation.
+  6. **Widget** (F-14) : affiche toutes les tâches non terminées (à faire, en cours, bloquées), dans les deux modes.
+  7. Changer de mode **ne modifie aucune tâche**.
+  8. **Changement d'état en mode kanban** : appui long sur une tâche ouvre un menu en texte, séparé par un trait horizontal :
+     - au-dessus du trait : « À faire », « En cours », « Bloquée », « Terminée » ;
+     - en dessous du trait : « Modifier », « Supprimer » (F-12.4).
+     En mode simple, l'appui long garde le menu actuel « Modifier », « Supprimer ».
+- Justification : un seul format évite de convertir le fichier quand on change de mode ; le réglage ne touche que l'affichage ; aucune tâche n'est perdue ni modifiée.
+- Réversibilité : facile (le fichier reste lisible ; les marqueurs `[>]` et `[!]` peuvent être remplacés par `[ ]`).
+- Références : SPEC F-8 (Réglages), F-12.3, F-12.5, F-12.7, F-14 ; DEC-0014 ; DEC-0039.
+- **À reporter dans SPEC.md** après validation sur le téléphone : réglage dans F-8, états et tri dans F-12, widget dans F-14.
