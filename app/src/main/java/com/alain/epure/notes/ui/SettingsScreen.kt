@@ -26,8 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.alain.epure.notes.R
 import com.alain.epure.notes.ui.theme.LocalNoteColors
 
@@ -119,18 +121,32 @@ fun SettingsScreen(
                 .sizeIn(minHeight = 48.dp)
                 .padding(horizontal = 24.dp, vertical = 12.dp)
         )
-        Text(
-            text = stringResource(
-                if (deletionAllowed) R.string.settings_deletion_on else R.string.settings_deletion_off
-            ),
-            style = MaterialTheme.typography.bodyLarge,
-            color = LocalNoteColors.current.textPrimary,
+        // Freewriting « oui » = effacement interdit (SPEC F-8.3, DEC-0015) ; la valeur stockée reste « effacement autorisé ».
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = viewModel::toggleDeletion)
                 .sizeIn(minHeight = 48.dp)
                 .padding(horizontal = 24.dp, vertical = 12.dp)
-        )
+        ) {
+            Text(
+                text = stringResource(
+                    if (deletionAllowed) R.string.settings_freewriting_off else R.string.settings_freewriting_on
+                ),
+                style = MaterialTheme.typography.bodyLarge,
+                color = LocalNoteColors.current.textPrimary
+            )
+            Text(
+                text = stringResource(
+                    if (deletionAllowed) R.string.settings_freewriting_hint_off else R.string.settings_freewriting_hint_on
+                ),
+                style = TextStyle(
+                    color = LocalNoteColors.current.textSecondary,
+                    fontSize = 16.sp,
+                    fontStyle = FontStyle.Italic
+                )
+            )
+        }
         Text(
             text = stringResource(if (tasksKanban) R.string.settings_tasks_kanban else R.string.settings_tasks_simple),
             style = MaterialTheme.typography.bodyLarge,

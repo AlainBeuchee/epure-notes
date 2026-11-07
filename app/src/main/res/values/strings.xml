@@ -58,8 +58,10 @@
     <string name="delete_note_question_backup">Supprimer cette note ? Elle sera aussi supprimée du dossier de sauvegarde.</string>
     <string name="settings_theme_night">Thème : Nuit</string>
     <string name="settings_theme_day">Thème : Jour</string>
-    <string name="settings_deletion_on">Effacer : oui</string>
-    <string name="settings_deletion_off">Effacer : non</string>
+    <string name="settings_freewriting_on">Freewriting : oui</string>
+    <string name="settings_freewriting_off">Freewriting : non</string>
+    <string name="settings_freewriting_hint_on">Le texte ne peut pas être effacé.</string>
+    <string name="settings_freewriting_hint_off">Le texte peut être effacé.</string>
     <string name="settings_tasks_simple">Tâches : simple</string>
     <string name="settings_tasks_kanban">Tâches : kanban</string>
     <string name="task_state_todo">À faire</string>

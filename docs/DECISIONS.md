@@ -498,3 +498,17 @@
 - Réversibilité : facile (le fichier reste lisible ; les marqueurs `[>]` et `[!]` peuvent être remplacés par `[ ]`).
 - Références : SPEC F-8 (Réglages), F-12.3, F-12.5, F-12.7, F-14 ; DEC-0014 ; DEC-0039.
 - **À reporter dans SPEC.md** après validation sur le téléphone : réglage dans F-8, états et tri dans F-12, widget dans F-14.
+
+## DEC-0042 — Libellé « Freewriting » du réglage d'effacement (révise F-8.3)
+
+- Date : 07/11/2026
+- Statut : **Décidée** le 07/11/2026 (choix d'Alain)
+- Contexte : « Effacer : oui / non » n'était pas explicite. Le mode qui interdit de supprimer du texte est appelé « freewriting » dans le cahier des charges.
+- Décision :
+  - Libellé : « Freewriting : oui » (effacement interdit) ou « Freewriting : non » (effacement autorisé). Par défaut : « Freewriting : non ».
+  - Mention en italique, 16 sp, sous le libellé : « Le texte ne peut pas être effacé. » si « oui » ; « Le texte peut être effacé. » si « non ».
+  - La valeur stockée ne change pas (effacement autorisé, true par défaut, DataStore) : seul l'affichage est inversé.
+- Justification : un mot plus explicite, déjà utilisé dans la documentation.
+- Réversibilité : facile.
+- Références : SPEC F-8.3 ; DEC-0015.
+- **À reporter dans SPEC.md** après validation sur le téléphone : F-8.3.
