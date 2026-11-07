@@ -127,7 +127,7 @@ Réglages limités au strict minimum, mémorisés dans DataStore (Preferences) :
 
 - **F-8.1** **Taille du texte** : 12, 14, 16, 18, 20, 22, 24 sp (DEC-0027). Un toucher sur le réglage passe à la valeur suivante (comme « 16px » dans freewrite). Valeur par défaut : **[À DÉCIDER]**, proposition 20 sp. (Le brief parle de « px » : en Android, le texte se mesure en `sp`, qui suit aussi le réglage de taille de police du téléphone.)
 - **F-8.2** **Thème** : « Nuit » (par défaut) ou « Jour » (DEC-0009, décidée). Dérogation à la charte A.5 (thème sombre uniquement). Le thème Jour s'applique à tout l'écran : fond blanc, texte noir. Couleurs exactes à valider sur l'appareil.
-- **F-8.3** **Effacement** : « Effacer : oui » (par défaut) / « Effacer : non ». Quand l'effacement est désactivé, toute suppression de texte est refusée (touche Retour arrière, couper, remplacer une sélection, correction automatique). Mise en œuvre : DEC-0015 ; comportement du clavier Samsung **[À VÉRIFIER]**.
+- **F-8.3** **Freewriting** (DEC-0042) : « Freewriting : non » (par défaut) / « Freewriting : oui ». Sous le libellé, en italique 16 sp : « Le texte peut être effacé. » si « non », « Le texte ne peut pas être effacé. » si « oui ». Quand le freewriting est activé, toute suppression de texte est refusée (touche Retour arrière, couper, remplacer une sélection, correction automatique). Mise en œuvre : DEC-0015 ; comportement du clavier Samsung **[À VÉRIFIER]**.
 - **F-8.4** « À propos » (F-15).
 - **F-8.5** Écran allumé pendant l'écriture : **[À DÉCIDER]** (F-16).
 - **F-8.6** « Sauvegarde » et « Restaurer depuis un dossier » (F-18), avec l'avertissement en italique tant que la sauvegarde est désactivée. Disponibles dès le jalon 2, avant les autres réglages.
@@ -289,7 +289,7 @@ Mise en forme (gras, titres, Markdown rendu), images, pièces jointes, dossiers 
 | F-6.4 | Suppression ou archivage | — |
 | F-7.2, F-7.4 | Libellés ; masquage automatique | DEC-0011 |
 | F-8.1 | Taille par défaut | — |
-| F-8.3 | Désactivation de l'effacement | DEC-0015 |
+| F-8.3 | Désactivation de l'effacement (freewriting) | DEC-0015, DEC-0042 |
 | F-9.2 | Partage en fichier | — |
 | F-10 | Réception de texte | DEC-0012 |
 | F-11.5 | Recherche dans la note | — |
@@ -304,3 +304,4 @@ Tranchés le 28/10/2026 : identité (DEC-0001), stockage (DEC-0007), sauvegarde 
 - 0.1 (28/10/2026) : première version, à partir du brief du 28/10/2026, des captures de freewrite (Android) et de `CHARTE.md` (Partie A 1.0).
 - 0.2 (28/10/2026) : décisions DEC-0007, 0008, 0009, 0013 et 0019 ; ajout de F-18 (sauvegarde et restauration optionnelles).
 - 0.3 (07/11/2026) : mode simple ou kanban des tâches (DEC-0041) ; F-8.7, F-12.4, F-12.5, F-12.7, F-12.8 et F-14.1 mis à jour.
+- 0.3 (07/11/2026, suite) : F-8.3 renommé « Freewriting » avec mention en italique (DEC-0042).
