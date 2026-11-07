@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredHeightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -244,21 +247,29 @@ private fun TaskItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = task.text,
-                style = MaterialTheme.typography.bodyLarge,
-                color = if (task.done) LocalNoteColors.current.textSecondary else LocalNoteColors.current.textPrimary,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .combinedClickable(
-                        onClick = onToggle,
-                        onLongClick = { menuOpen = true }
-                    )
-                    .sizeIn(minHeight = 48.dp)
-                    .padding(start = 24.dp, top = 12.dp, bottom = 12.dp)
-            )
+            // Ligne visible de 40 dp (8 dp de marge haut et bas). La zone de toucher fait 48 dp
+            // (charte, cible tactile) et déborde de 4 dp en haut et en bas, sans agrandir l'espace.
+            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Text(
+                    text = task.text,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = if (task.done) LocalNoteColors.current.textSecondary else LocalNoteColors.current.textPrimary,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 24.dp, top = 8.dp, bottom = 8.dp)
+                )
+                Box(
+                    modifier = Modifier
+                        .matchParentSize()
+                        .requiredHeightIn(min = 48.dp)
+                        .combinedClickable(
+                            onClick = onToggle,
+                            onLongClick = { menuOpen = true }
+                        )
+                )
+            }
             DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
                 // Mode kanban : changement d'état au-dessus du trait (DEC-0041).
                 if (kanban) {
@@ -291,12 +302,15 @@ private fun TaskItem(
         }
         // Retrait d'une seule tâche faite (SPEC F-12.4, demande d'Alain).
         if (task.done) {
-            TextButton(
-                onClick = onDelete,
-                modifier = Modifier.sizeIn(minHeight = 48.dp),
-                colors = ButtonDefaults.textButtonColors(contentColor = LocalNoteColors.current.textSecondary)
-            ) {
-                Text(text = stringResource(R.string.action_remove))
+            // Même principe : hauteur visible de 40 dp, bouton de 48 dp centré.
+            Box(modifier = Modifier.height(40.dp), contentAlignment = Alignment.Center) {
+                TextButton(
+                    onClick = onDelete,
+                    modifier = Modifier.requiredHeight(48.dp),
+                    colors = ButtonDefaults.textButtonColors(contentColor = LocalNoteColors.current.textSecondary)
+                ) {
+                    Text(text = stringResource(R.string.action_remove))
+                }
             }
         }
     }
