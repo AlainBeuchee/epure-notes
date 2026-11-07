@@ -167,7 +167,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 - **F-12.5** Action « Effacer les tâches faites » (irréversible → confirmation). Efface uniquement les tâches terminées, dans les deux modes.
 - **F-12.6** Liste vide : « Aucune tâche ».
 - **F-12.7** Stockage (DEC-0014, DEC-0041) : un fichier `taches.md`, une tâche par ligne : `- [ ] …` à faire, `- [>] …` en cours, `- [!] …` bloquée, `- [x] …` terminée. Format unique pour les deux modes ; lisible tel quel s'il est partagé. `[>]` et `[!]` ne sont pas des cases Markdown standard.
-- **F-12.8** Mode kanban (DEC-0041) : liste unique, regroupée par état dans l'ordre à faire, en cours, bloquée, terminée. Un en-tête affiché une seule fois devant chaque groupe ; un groupe vide n'a pas d'en-tête. Mode simple : les tâches « en cours » et « bloquées » s'affichent comme « à faire », sans changer d'état. Changer de mode ne modifie aucune tâche.
+- **F-12.8** Mode kanban (DEC-0041) : liste unique, regroupée par état dans l'ordre à faire, en cours, bloquée, terminée. Un en-tête affiché une seule fois devant chaque groupe ; un groupe vide n'a pas d'en-tête. Mode simple : les tâches « en cours » et « bloquées » s'affichent comme « à faire », sans changer d'état. Changer de mode ne modifie aucune tâche. Entre deux groupes, un espace de 32 dp sépare les en-têtes ; les tâches d'un même groupe restent serrées (DEC-0044).
 
 ### F-13 — Ajouter une ligne d'une note aux tâches (jalon 5)
 

@@ -525,3 +525,16 @@
 - Réversibilité : facile.
 - Références : SPEC F-8.3, F-12.3, F-14.2 ; DEC-0015, DEC-0042.
 - **À reporter dans SPEC.md** : F-8.3 (clavier vérifié), F-12.3 (plus de [À DÉCIDER]), F-14.2 (décidé).
+
+## DEC-0044 — Espacement des tâches et des groupes en kanban (F-12.8)
+
+- Date : 07/11/2026
+- Statut : **Décidée** le 07/11/2026 (choix d'Alain, après test sur le téléphone)
+- Contexte : les tâches étaient trop espacées ; les groupes du mode kanban se distinguaient mal.
+- Décision :
+  1. **Tâches** : ligne visible de 40 dp (8 dp de marge haut et bas). La zone de toucher reste à 48 dp et déborde de 4 dp en haut et en bas (charte, cible tactile).
+  2. **Groupes en kanban** : 32 dp au-dessus de chaque en-tête (16 dp avant). Les tâches d'un même groupe restent serrées.
+  3. **Trait vertical** à gauche des groupes : testé, non retenu.
+- Justification : choix d'Alain après comparaison sur le téléphone.
+- Réversibilité : facile (valeurs de marge).
+- Références : SPEC F-12.8 ; DEC-0041 ; charte A.5 (cibles tactiles 48 dp).
