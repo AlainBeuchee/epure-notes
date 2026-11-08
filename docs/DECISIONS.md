@@ -593,7 +593,7 @@
 ## DEC-0050 — Taille du texte par défaut : 14 sp
 
 - Date : 08/11/2026
-- Statut : **Décidée** le 08/11/2026 (demandée par Alain) — **validation sur l'appareil à faire**
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), **validée sur le téléphone** le 08/11/2026
 - Contexte : F-8.1 laissait la valeur par défaut à trancher (proposition : 20 sp). Alain souhaite un texte plus petit par défaut.
 - Décision : valeur par défaut 14 sp (`DEFAULT_TEXT_SIZE` dans `domain/TextSize.kt`). Les paliers (DEC-0027) ne changent pas.
 - Justification : demande d'Alain.
