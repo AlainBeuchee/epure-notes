@@ -183,10 +183,6 @@ class MainActivity : ComponentActivity() {
                     Screen.Tasks -> TasksScreen(
                         viewModel = tasksViewModel,
                         onBack = { screen = Screen.Editor },
-                        onNewNote = {
-                            editorViewModel.newNote()
-                            screen = Screen.Editor
-                        },
                         onOpenNotes = { screen = Screen.Notes },
                         onOpenSettings = { screen = Screen.Settings }
                     )

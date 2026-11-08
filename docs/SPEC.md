@@ -115,7 +115,7 @@ Avant une publication sur le Play Store : recherche d'homonymes, vérification I
 ### F-7 — Barre de commandes (jalons 1 et 3)
 
 - **F-7.1** Barre en bas de l'éditeur, au-dessus du clavier quand il est ouvert ; fond `Black` (ou fond du thème clair), filet de 1 dp en haut, **texte seul, sans icône** (charte A.5, DEC-0011).
-- **F-7.2** Actions de la barre (DEC-0039) : « + » (Nouvelle note), « > tâche » (ajouter la ligne du curseur aux tâches ; devient « > note » quand du texte est sélectionné, DEC-0040), « ^ » (Réglages), « - tâches » (effacer les tâches faites), « Notes », « Tâches », « Retour ». Répartition par écran dans DEC-0039.
+- **F-7.2** Actions de la barre (DEC-0039) : « + » (Nouvelle note ; sur l'écran « Tâches », ajout de tâche, DEC-0045), « > tâche » (ajouter la ligne du curseur aux tâches ; devient « > note » quand du texte est sélectionné, DEC-0040), « ^ » (Réglages), « - tâches » (effacer les tâches faites), « Notes », « Tâches », « Retour ». Répartition par écran dans DEC-0039.
 - **F-7.3** Jalon 1 : barre toujours visible (prototype).
 - **F-7.4** Jalon 3 — masquage automatique : la barre disparaît dès que l'on tape ; elle réapparaît au toucher du texte, à la fermeture du clavier, ou après une pause de frappe (proposition : 3 s, **[À DÉCIDER]**). Apparition et disparition immédiates, sans animation.
   > Un toucher dans le texte sert aussi à placer le curseur : on ne peut pas réserver le toucher simple à l'affichage des commandes comme dans un lecteur. Comportement à valider sur l'appareil **[À VÉRIFIER]**.
@@ -161,7 +161,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 ### F-12 — Liste de tâches (jalon 5)
 
 - **F-12.1** **Une seule** liste de tâches, écran « Tâches ».
-- **F-12.2** Champ en haut « Ajouter une tâche » ; Entrée valide la tâche et garde le champ ouvert.
+- **F-12.2** Le « + » de la barre ouvre un champ d'ajout de tâche, sans libellé fixe en haut de la liste (DEC-0045) ; le champ n'apparaît qu'après cet appui. Entrée valide la tâche et garde le champ ouvert.
 - **F-12.3** Appui court sur une tâche : la marque faite / à faire. Une tâche faite passe en `TextSecondary` et en bas de la liste (pas de case à cocher dessinée ni de texte barré, DEC-0043).
 - **F-12.4** Appui long : menu « Modifier », « Supprimer ». En mode kanban (F-12.8), le menu commence par les quatre états « À faire », « En cours », « Bloquée », « Terminée », séparés par un trait.
 - **F-12.5** Action « Effacer les tâches faites » (irréversible → confirmation). Efface uniquement les tâches terminées, dans les deux modes.
@@ -305,3 +305,4 @@ Tranchés le 28/10/2026 : identité (DEC-0001), stockage (DEC-0007), sauvegarde 
 - 0.2 (28/10/2026) : décisions DEC-0007, 0008, 0009, 0013 et 0019 ; ajout de F-18 (sauvegarde et restauration optionnelles).
 - 0.3 (07/11/2026) : mode simple ou kanban des tâches (DEC-0041) ; F-8.7, F-12.4, F-12.5, F-12.7, F-12.8 et F-14.1 mis à jour.
 - 0.3 (07/11/2026, suite) : F-8.3 renommé « Freewriting » avec mention en italique (DEC-0042) ; F-8.3, F-12.3 et F-14.2 précisés (DEC-0043).
+- 0.3 (08/11/2026) : « + » de l'écran « Tâches » ouvre l'ajout de tâche (DEC-0045) ; F-7.2 et F-12.2 mis à jour.

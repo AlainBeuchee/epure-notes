@@ -538,3 +538,17 @@
 - Justification : choix d'Alain après comparaison sur le téléphone.
 - Réversibilité : facile (valeurs de marge).
 - Références : SPEC F-12.8 ; DEC-0041 ; charte A.5 (cibles tactiles 48 dp).
+
+## DEC-0045 — Ajout de tâche depuis la barre de l'écran « Tâches » (F-7.2, F-12.2)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), **validée sur le téléphone** le 08/11/2026. SPEC F-7.2 et F-12.2 reportés le même jour.
+- Contexte : sur l'écran « Tâches », le « + » de la barre créait une nouvelle note, et un champ « Ajouter une tâche » restait fixe en haut de la liste.
+- Décision :
+  1. Sur l'écran « Tâches », « + » ouvre le champ d'ajout de tâche (et non plus une note). Le champ n'est visible qu'après cet appui, avec le clavier ouvert.
+  2. Le libellé fixe « Ajouter une tâche » en haut de la liste est supprimé. Son nom reste pour les lecteurs d'écran (« Ajouter une tâche »).
+  3. Entrée valide la tâche et garde le champ ouvert (F-12.2). Le retour ferme d'abord le champ, puis revient à l'éditeur (T-8).
+  4. Sur les écrans « Éditeur » et « Notes », « + » crée toujours une nouvelle note.
+- Justification : la barre devient cohérente avec l'écran ; le libellé fixe ne servait plus.
+- Réversibilité : facile.
+- Références : SPEC F-7.2, F-12.2, T-8 ; DEC-0039.

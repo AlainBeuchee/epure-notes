@@ -20,7 +20,7 @@
     <string name="action_to_note">&gt; note</string>
     <string name="action_added">Ajoutée</string>
     <string name="tasks_title">Tâches</string>
-    <string name="tasks_add_hint">Ajouter une tâche</string>
+    <string name="cd_new_task">Ajouter une tâche</string>
     <string name="tasks_empty">Aucune tâche</string>
     <string name="action_clear_done">- tâches</string>
     <string name="clear_done_question">Effacer les tâches faites ?</string>

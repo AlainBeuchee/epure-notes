@@ -29,6 +29,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +38,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -50,23 +53,30 @@ import com.alain.epure.notes.domain.TaskState
 import com.alain.epure.notes.domain.displayOrder
 import com.alain.epure.notes.ui.theme.LocalNoteColors
 
-// Liste « Tâches » (SPEC F-12) : ajout en haut, appui court = faite / à faire, appui long = modifier ou supprimer.
+// Liste « Tâches » (SPEC F-12) : le « + » de la barre ouvre le champ d'ajout (DEC-0045), appui court = faite / à faire, appui long = modifier ou supprimer.
 @Composable
 fun TasksScreen(
     viewModel: TasksViewModel,
     onBack: () -> Unit,
-    onNewNote: () -> Unit,
     onOpenNotes: () -> Unit,
     onOpenSettings: () -> Unit
 ) {
     val tasks by viewModel.tasks.collectAsState()
     val kanban by viewModel.kanban.collectAsState()
     var draft by rememberSaveable { mutableStateOf("") }
+    // Champ d'ajout : visible seulement après un appui sur « + » (DEC-0045).
+    var adding by rememberSaveable { mutableStateOf(false) }
+    val addFocus = remember { FocusRequester() }
     var clearDoneAsked by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<Int?>(null) }
     var editDraft by remember { mutableStateOf("") }
 
     BackHandler(onBack = onBack)
+    // Déclaré après : le retour ferme d'abord le champ d'ajout s'il est ouvert (T-8).
+    BackHandler(enabled = adding) { adding = false }
+    LaunchedEffect(adding) {
+        if (adding) addFocus.requestFocus()
+    }
 
     Column(
         modifier = Modifier
@@ -80,34 +90,26 @@ fun TasksScreen(
             color = LocalNoteColors.current.textPrimary,
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 24.dp)
         )
-        // Champ « Ajouter une tâche » (SPEC F-12.2) : Entrée valide et garde le champ ouvert.
-        BasicTextField(
-            value = draft,
-            onValueChange = { draft = it },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-            keyboardActions = KeyboardActions(onDone = {
-                viewModel.add(draft)
-                draft = ""
-            }),
-            textStyle = TextStyle(color = LocalNoteColors.current.textPrimary, fontSize = 18.sp),
-            cursorBrush = SolidColor(LocalNoteColors.current.textPrimary),
-            modifier = Modifier
-                .fillMaxWidth()
-                .sizeIn(minHeight = 48.dp)
-                .padding(horizontal = 24.dp),
-            decorationBox = { innerTextField ->
-                Box(contentAlignment = Alignment.CenterStart) {
-                    if (draft.isEmpty()) {
-                        Text(
-                            text = stringResource(R.string.tasks_add_hint),
-                            style = TextStyle(color = LocalNoteColors.current.textSecondary, fontSize = 18.sp)
-                        )
-                    }
-                    innerTextField()
-                }
-            }
-        )
+        // Champ d'ajout (SPEC F-12.2) : ouvert par « + », sans libellé. Entrée valide et garde le champ ouvert.
+        if (adding) {
+            BasicTextField(
+                value = draft,
+                onValueChange = { draft = it },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(onDone = {
+                    viewModel.add(draft)
+                    draft = ""
+                }),
+                textStyle = TextStyle(color = LocalNoteColors.current.textPrimary, fontSize = 18.sp),
+                cursorBrush = SolidColor(LocalNoteColors.current.textPrimary),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .sizeIn(minHeight = 48.dp)
+                    .padding(horizontal = 24.dp)
+                    .focusRequester(addFocus)
+            )
+        }
         if (tasks.isEmpty()) {
             Box(
                 modifier = Modifier
@@ -153,8 +155,8 @@ fun TasksScreen(
                 Row {
                 CommandButton(
                     label = stringResource(R.string.action_new_note),
-                    description = stringResource(R.string.cd_new_note),
-                    onClick = onNewNote
+                    description = stringResource(R.string.cd_new_task),
+                    onClick = { adding = true }
                 )
                 CommandButton(
                     label = stringResource(R.string.action_clear_done),
