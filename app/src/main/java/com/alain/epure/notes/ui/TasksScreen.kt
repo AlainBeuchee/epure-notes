@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -69,6 +70,8 @@ fun TasksScreen(
     // Champ d'ajout : visible seulement après un appui sur « + » (DEC-0045).
     var adding by rememberSaveable { mutableStateOf(false) }
     val addFocus = remember { FocusRequester() }
+    // Chaque appui sur « + » incrémente ce compteur : le clavier revient même si le champ était déjà ouvert (DEC-0048).
+    var addRequest by remember { mutableIntStateOf(0) }
     val keyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     var clearDoneAsked by remember { mutableStateOf(false) }
@@ -78,7 +81,7 @@ fun TasksScreen(
     BackHandler(onBack = onBack)
     // Déclaré après : le retour ferme d'abord le champ d'ajout s'il est ouvert (T-8).
     BackHandler(enabled = adding) { adding = false }
-    LaunchedEffect(adding) {
+    LaunchedEffect(adding, addRequest) {
         if (adding) addFocus.requestFocus()
     }
 
@@ -165,7 +168,10 @@ fun TasksScreen(
                 CommandButton(
                     label = stringResource(R.string.action_new_note),
                     description = stringResource(R.string.cd_new_task),
-                    onClick = { adding = true }
+                    onClick = {
+                        adding = true
+                        addRequest++
+                    }
                 )
                 CommandButton(
                     label = stringResource(R.string.action_clear_done),

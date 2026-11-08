@@ -562,6 +562,15 @@
 - Réversibilité : facile.
 - Références : SPEC F-12.2, F-12.3 ; DEC-0045.
 
+## DEC-0048 — « + » réouvre le clavier (précise DEC-0045, DEC-0047)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), **validée sur le téléphone** le 08/11/2026.
+- Décision : un appui sur « + » donne le focus au champ d'ajout et réaffiche le clavier, même si le champ est déjà ouvert (par exemple après un appui sur une tâche, DEC-0047).
+- Justification : « + » doit toujours permettre d'écrire tout de suite.
+- Réversibilité : facile.
+- Références : SPEC F-12.2 ; DEC-0045, DEC-0047.
+
 ## DEC-0046 — Libellé « - » pour effacer les tâches faites (révise DEC-0039)
 
 - Date : 08/11/2026
