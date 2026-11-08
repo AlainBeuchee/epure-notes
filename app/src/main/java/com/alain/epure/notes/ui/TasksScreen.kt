@@ -40,6 +40,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -67,6 +69,8 @@ fun TasksScreen(
     // Champ d'ajout : visible seulement après un appui sur « + » (DEC-0045).
     var adding by rememberSaveable { mutableStateOf(false) }
     val addFocus = remember { FocusRequester() }
+    val keyboard = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     var clearDoneAsked by remember { mutableStateOf(false) }
     var editing by remember { mutableStateOf<Int?>(null) }
     var editDraft by remember { mutableStateOf("") }
@@ -133,7 +137,12 @@ fun TasksScreen(
                         TaskItem(
                             task = task,
                             kanban = kanban,
-                            onToggle = { viewModel.toggle(index) },
+                            onToggle = {
+                                // Un appui sur une tâche ferme le clavier du champ d'ajout (DEC-0047). Le champ reste ouvert.
+                                focusManager.clearFocus()
+                                keyboard?.hide()
+                                viewModel.toggle(index)
+                            },
                             onSetState = { viewModel.setState(index, it) },
                             onEdit = {
                                 editDraft = task.text

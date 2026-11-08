@@ -553,6 +553,15 @@
 - Réversibilité : facile.
 - Références : SPEC F-7.2, F-12.2, T-8 ; DEC-0039.
 
+## DEC-0047 — Appui sur une tâche ferme le clavier (précise DEC-0045)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), **validée sur le téléphone** le 08/11/2026.
+- Décision : un appui court sur une tâche (qui la marque faite ou à faire) ferme le clavier du champ d'ajout. Le champ reste ouvert, vide ou non.
+- Justification : le clavier ne doit pas rester affiché quand on touche la liste.
+- Réversibilité : facile.
+- Références : SPEC F-12.2, F-12.3 ; DEC-0045.
+
 ## DEC-0046 — Libellé « - » pour effacer les tâches faites (révise DEC-0039)
 
 - Date : 08/11/2026
