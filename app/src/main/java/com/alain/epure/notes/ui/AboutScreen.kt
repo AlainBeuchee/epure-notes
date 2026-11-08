@@ -27,7 +27,7 @@ import com.alain.epure.notes.BuildConfig
 import com.alain.epure.notes.R
 import com.alain.epure.notes.ui.theme.LocalNoteColors
 
-private const val REPOSITORY_URL = "https://github.com/beuchee/epure-notes"
+private const val REPOSITORY_URL = "https://github.com/AlainBeuchee/epure-notes"
 
 // « À propos » (SPEC F-15) : version, licence, confidentialité, avertissement de perte (F-18.2).
 @Composable
