@@ -13,7 +13,7 @@ android {
         applicationId = "com.alain.epure.notes"
         minSdk = 31
         targetSdk = 36
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -21,9 +21,10 @@ android {
 
     buildTypes {
         release {
+            // Optimisation R8 désactivée : la version release plantait au démarrage
+            // (IllegalAccessError sur kotlin.sequences, voir DEC-0049).
             optimization {
-                enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
+                enable = false
             }
         }
     }

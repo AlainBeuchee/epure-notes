@@ -562,6 +562,16 @@
 - Réversibilité : facile.
 - Références : SPEC F-12.2, F-12.3 ; DEC-0045.
 
+## DEC-0049 — Optimisation R8 désactivée en release (corrige un plantage au démarrage)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (choix proposé par l'assistant), **validée sur le téléphone** le 08/11/2026 par la version 1.0 (2) de test interne. Le code de version passe de 1 à 2, car la version 1 est déjà enregistrée dans la console.
+- Contexte : la version publiée en test interne (version 1) plantait au démarrage sur le téléphone, avec `IllegalAccessError` sur `kotlin.sequences` (journal `adb logcat`). Le build de debug fonctionnait.
+- Décision : dans `app/build.gradle.kts`, l'optimisation R8 de la version release est désactivée (`enable = false`), et la restriction `packageScope` est retirée. Le build release est plus gros mais se comporte comme le debug.
+- Justification : solution simple, sûre. Une version qui plante vaut pire qu'un APK plus gros. Une optimisation réactivée pourra être réétudiée plus tard, avec des règles de conservation testées.
+- Réversibilité : facile (une ligne).
+- Références : ROADMAP « Avant une éventuelle publication » ; DEC-0020.
+
 ## DEC-0048 — « + » réouvre le clavier (précise DEC-0045, DEC-0047)
 
 - Date : 08/11/2026
