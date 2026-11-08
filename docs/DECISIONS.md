@@ -599,3 +599,19 @@
 - Justification : demande d'Alain.
 - Réversibilité : facile (une constante).
 - Références : SPEC F-8.1, DEC-0027.
+
+## DEC-0051 — Widget « Tâches » en kanban (F-14, F-8.7)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), mise en œuvre proposée par l'assistant, **validée sur le téléphone** le 08/11/2026 (titres en italique choisis par Alain)
+- Contexte : Alain souhaite que le widget suive le réglage « Tâches : simple / kanban ». Aujourd'hui, le widget affiche toujours la même liste à puces, quel que soit le mode (DEC-0041, point 6).
+- Décision :
+  1. **Mode kanban** : le widget regroupe les tâches non terminées par état, dans l'ordre À faire, En cours, Bloquée. Chaque groupe commence par son libellé en italique (mêmes libellés que l'écran « Tâches »), suivi de ses tâches en puces. Un groupe vide n'affiche pas d'en-tête. Les groupes sont séparés par une ligne vide.
+  2. **Mode simple** : inchangé (liste à puces des tâches non terminées).
+  3. **Widget de l'écran verrouillé** : suit le même réglage, puisqu'il partage le même contenu.
+  4. Le texte « Aucune tâche » reste affiché si la liste de tâches non terminées est vide.
+  5. Le tri par état et le filtre des tâches terminées sont dans `domain/` (`openTasksByState`), couverts par des tests unitaires.
+- Justification : même logique que l'écran « Tâches » ; le widget reste texte seul, fond noir (F-14.1), sans nouvelle dépendance ni permission.
+- Réversibilité : facile (un seul endroit dans le code de l'affichage du widget).
+- Références : SPEC F-8.7, F-14.1 ; DEC-0041, DEC-0035, DEC-0016.
+- **À reporter dans SPEC.md** après validation sur le téléphone : F-14.1 (widget suit le réglage kanban).

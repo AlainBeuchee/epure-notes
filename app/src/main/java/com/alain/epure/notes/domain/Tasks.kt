@@ -43,6 +43,13 @@ fun displayOrder(tasks: List<Task>, kanban: Boolean): List<Int> =
         if (kanban) task.state.ordinal else if (task.done) 1 else 0
     }
 
+// Widget en mode kanban (SPEC F-14.1, DEC-0051) : tâches non terminées, groupées par état (à faire, en cours, bloquée).
+// Un état sans tâche n'apparaît pas. Les tâches faites ne sont jamais incluses.
+fun openTasksByState(tasks: List<Task>): List<Pair<TaskState, List<Task>>> =
+    listOf(TaskState.TODO, TaskState.DOING, TaskState.BLOCKED).mapNotNull { state ->
+        tasks.filter { it.state == state }.takeIf { it.isNotEmpty() }?.let { state to it }
+    }
+
 private fun stateOf(marker: Char): TaskState = when (marker) {
     '>' -> TaskState.DOING
     '!' -> TaskState.BLOCKED

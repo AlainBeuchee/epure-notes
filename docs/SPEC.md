@@ -131,7 +131,7 @@ Réglages limités au strict minimum, mémorisés dans DataStore (Preferences) :
 - **F-8.4** « À propos » (F-15).
 - **F-8.5** Écran allumé pendant l'écriture : **[À DÉCIDER]** (F-16).
 - **F-8.6** « Sauvegarde » et « Restaurer depuis un dossier » (F-18), avec l'avertissement en italique tant que la sauvegarde est désactivée. Disponibles dès le jalon 2, avant les autres réglages.
-- **F-8.7** **Tâches** : « Tâches : simple » (par défaut) / « Tâches : kanban » (DEC-0041). Ne change que l'affichage de la liste (F-12.8).
+- **F-8.7** **Tâches** : « Tâches : simple » (par défaut) / « Tâches : kanban » (DEC-0041). Ne change que l'affichage de la liste (F-12.8) et celui du widget (F-14.1).
 
 *Critères* : chaque réglage s'applique immédiatement et survit à un redémarrage ; avec « Effacer : non », la touche Retour arrière, « Couper » et une correction automatique ne retirent aucun caractère.
 
@@ -180,7 +180,7 @@ Le brief prévoyait l'ouverture de PDF depuis d'autres apps (intent `VIEW`, `app
 
 ### F-14 — Tâches sur l'écran d'accueil (jalon 6, conditionnel)
 
-- **F-14.1** Widget affichant les tâches non terminées (à faire, en cours, bloquées), dans les deux modes, texte seul, fond noir ; toucher → ouvre l'écran « Tâches ».
+- **F-14.1** Widget affichant les tâches non terminées (à faire, en cours, bloquées), texte seul, fond noir ; toucher → ouvre l'écran « Tâches ». En mode simple : liste à puces. En mode kanban (DEC-0051) : groupes à faire, en cours, bloquée, chacun précédé de son libellé en italique, groupes vides omis, une ligne vide entre les groupes. Le widget de l'écran verrouillé suit le même réglage. Le réglage redessine le widget aussitôt.
 - **F-14.2** Pas de cochage depuis le widget (DEC-0043) : un toucher ouvre l'écran « Tâches ».
 - **F-14.3** Nécessite probablement la bibliothèque Jetpack Glance (DEC-0016, à justifier au jalon 6) ; vérifier qu'elle n'ajoute aucune permission.
 - **F-14.4** **[À VÉRIFIER]** : le launcher Épure accueille-t-il des widgets ? Si non, le widget ne sera visible qu'avec le launcher One UI ; alternative possible : raccourci d'app (appui long sur l'icône → « Tâches »), qui ne demande aucune bibliothèque.
@@ -306,3 +306,4 @@ Tranchés le 28/10/2026 : identité (DEC-0001), stockage (DEC-0007), sauvegarde 
 - 0.3 (07/11/2026) : mode simple ou kanban des tâches (DEC-0041) ; F-8.7, F-12.4, F-12.5, F-12.7, F-12.8 et F-14.1 mis à jour.
 - 0.3 (07/11/2026, suite) : F-8.3 renommé « Freewriting » avec mention en italique (DEC-0042) ; F-8.3, F-12.3 et F-14.2 précisés (DEC-0043).
 - 0.3 (08/11/2026) : « + » de l'écran « Tâches » ouvre l'ajout de tâche (DEC-0045) ; F-7.2 et F-12.2 mis à jour.
+- 0.3 (08/11/2026, suite) : widget « Tâches » en kanban (DEC-0051) ; F-8.7 et F-14.1 mis à jour. Valeur par défaut de la taille du texte : 14 sp (DEC-0050), F-8.1 mis à jour.

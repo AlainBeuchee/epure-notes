@@ -19,7 +19,7 @@ data class BackupSetting(val active: Boolean, val folderName: String?)
 class SettingsViewModel(
     private val settings: SettingsStore,
     backup: BackupFolder,
-    private val onLockScreenChanged: () -> Unit = {}
+    private val onWidgetsChanged: () -> Unit = {}
 ) : ViewModel() {
 
     val backupSetting: StateFlow<BackupSetting> = settings.backupFolder
@@ -54,7 +54,7 @@ class SettingsViewModel(
     fun toggleLockScreenTasks() {
         viewModelScope.launch {
             settings.setLockScreenTasks(!lockScreenTasks.value)
-            onLockScreenChanged()
+            onWidgetsChanged()
         }
     }
 
@@ -62,8 +62,12 @@ class SettingsViewModel(
     val tasksKanban: StateFlow<Boolean> = settings.tasksKanban
         .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
+    // Le widget suit ce réglage (DEC-0051) : il est redessiné aussitôt.
     fun toggleTasksKanban() {
-        viewModelScope.launch { settings.setTasksKanban(!tasksKanban.value) }
+        viewModelScope.launch {
+            settings.setTasksKanban(!tasksKanban.value)
+            onWidgetsChanged()
+        }
     }
 
     // « Effacer : oui » ou « non » (SPEC F-8.3).

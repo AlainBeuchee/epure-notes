@@ -83,4 +83,26 @@ class TasksTest {
         )
         assertEquals(listOf(2, 4, 3, 1, 0), displayOrder(tasks, kanban = true))
     }
+
+    @Test
+    fun openTasksByStateSkipsDoneAndEmptyGroups() {
+        val tasks = listOf(
+            Task("a", TaskState.DONE),
+            Task("b", TaskState.BLOCKED),
+            Task("c", TaskState.TODO),
+            Task("d", TaskState.TODO)
+        )
+        assertEquals(
+            listOf(
+                TaskState.TODO to listOf(Task("c", TaskState.TODO), Task("d", TaskState.TODO)),
+                TaskState.BLOCKED to listOf(Task("b", TaskState.BLOCKED))
+            ),
+            openTasksByState(tasks)
+        )
+    }
+
+    @Test
+    fun openTasksByStateIsEmptyWhenAllDone() {
+        assertEquals(emptyList<Pair<TaskState, List<Task>>>(), openTasksByState(listOf(Task("a", TaskState.DONE))))
+    }
 }
