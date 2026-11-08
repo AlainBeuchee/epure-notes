@@ -178,6 +178,7 @@ Décision à trancher : DEC-0016 (widget ou raccourci, bibliothèque).
 - [x] Mode kanban : appui long → « À faire », « En cours », « Bloquée », « Terminée », trait, puis « Modifier », « Supprimer » (DEC-0041)
 - [x] Format `- [>]` (en cours) et `- [!]` (bloquée) lu et conservé ; widget : tâches non terminées (DEC-0041)
 - [x] Écran « Tâches » : « + » ouvre l'ajout de tâche (et non plus une note), champ fixe « Ajouter une tâche » retiré (DEC-0045)
+- [x] Écran « Tâches » : libellé de la barre « - tâches » réduit à « - » (DEC-0046)
 
 ## Avant une éventuelle publication (hors jalons)
 

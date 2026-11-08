@@ -552,3 +552,12 @@
 - Justification : la barre devient cohérente avec l'écran ; le libellé fixe ne servait plus.
 - Réversibilité : facile.
 - Références : SPEC F-7.2, F-12.2, T-8 ; DEC-0039.
+
+## DEC-0046 — Libellé « - » pour effacer les tâches faites (révise DEC-0039)
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain), **validée sur le téléphone** le 08/11/2026.
+- Décision : sur l'écran « Tâches », le libellé de la barre passe de « - tâches » à « - ». L'action ne change pas : efface les tâches faites, après confirmation (F-12.5). Le nom lu par les lecteurs d'écran reste « Effacer les tâches faites ».
+- Justification : avec « + » qui ajoute une tâche, « - » est le geste opposé et se comprend seul.
+- Réversibilité : facile (une valeur de chaîne).
+- Références : SPEC F-7.2, F-12.5 ; DEC-0039, DEC-0045.

@@ -22,7 +22,7 @@
     <string name="tasks_title">Tâches</string>
     <string name="cd_new_task">Ajouter une tâche</string>
     <string name="tasks_empty">Aucune tâche</string>
-    <string name="action_clear_done">- tâches</string>
+    <string name="action_clear_done">-</string>
     <string name="clear_done_question">Effacer les tâches faites ?</string>
     <string name="action_clear">Effacer</string>
     <string name="action_edit">Modifier</string>
