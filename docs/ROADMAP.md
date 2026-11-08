@@ -183,6 +183,7 @@ Décision à trancher : DEC-0016 (widget ou raccourci, bibliothèque).
 ## Avant une éventuelle publication (hors jalons)
 
 - [x] Recherche d'homonymes, INPI / EUIPO / TMview (classe 9) : négative (08/11/2026)
-- [ ] Clé de signature créée et sauvegardée hors du dépôt
-- [ ] Politique de confidentialité (exigée par le Play Store, même sans collecte)
-- [ ] Fiche du store sans nom de marque tierce
+- [x] Clé de signature créée et sauvegardée hors du dépôt (aucun fichier de clé suivi par Git)
+- [x] Politique de confidentialité (exigée par le Play Store, même sans collecte)
+- [x] Fiche du store sans nom de marque tierce
+- [x] Publication sur le Play Store jusqu'à la version 1.0 (2) (test interne)
