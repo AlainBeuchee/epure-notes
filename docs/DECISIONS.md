@@ -141,7 +141,7 @@
 ## DEC-0012 — Éléments du brief propres à un lecteur PDF
 
 - Date : 28/10/2026
-- Statut : **Proposée**
+- Statut : **Décidée** le 28/10/2026 — appliquée dans le code jusqu'au jalon 6 (statut mis à jour d'après le code ; **à confirmer par Alain**)
 - Contexte : le brief d'Épure Notes reprend plusieurs éléments d'Épure PDF (zoom, demi-page, indicateur « 12 / 48 », saut de page, inversion des couleurs des pages, intent `VIEW` `application/pdf`, URI persistantes, PdfRenderer / pdfium, « retirer de la liste sans supprimer le fichier »).
 - Décision proposée : les écarter ou les remplacer selon le tableau SPEC § 5. En particulier : réception de texte partagé (`ACTION_SEND`, `text/plain`) à la place de l'ouverture de PDF ; taille du texte réglable à la place du zoom ; thème Nuit / Jour à la place de l'inversion.
 - Justification : le double toucher et le pincement ont déjà un rôle dans un champ de texte (sélection) ; la notion de page n'existe pas dans une note.
@@ -164,7 +164,7 @@
 ## DEC-0014 — Format de la liste de tâches
 
 - Date : 28/10/2026
-- Statut : **[À DÉCIDER]** avant le jalon 5
+- Statut : **Décidée** — option A, appliquée au jalon 5 (`taches.md` dans le stockage interne ; statut mis à jour d'après le code ; **à confirmer par Alain**)
 - Options :
   - A. Fichier unique `taches.md`, une tâche par ligne : `- [ ] texte` / `- [x] texte`. Lisible hors de l'app, partageable tel quel, cohérent avec les notes.
   - B. DataStore (liste sérialisée). Plus simple à coder, illisible hors de l'app.
@@ -186,7 +186,7 @@
 ## DEC-0016 — Tâches sur l'écran d'accueil
 
 - Date : 28/10/2026
-- Statut : **[À DÉCIDER]** au jalon 6
+- Statut : **Décidée** — option B, appliquée au jalon 6 (`RemoteViews`, sans dépendance ; voir DEC-0037 ; statut mis à jour d'après le code ; **à confirmer par Alain**)
 - Options :
   - A. Widget avec Jetpack Glance (bibliothèque AndroidX, Apache 2.0, compatible GPL v3) : affiche les tâches ; nouvelle dépendance à justifier.
   - B. Widget avec les `RemoteViews` classiques : aucune dépendance, code plus verbeux.
