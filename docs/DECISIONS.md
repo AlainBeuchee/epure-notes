@@ -589,3 +589,13 @@
 - Justification : avec « + » qui ajoute une tâche, « - » est le geste opposé et se comprend seul.
 - Réversibilité : facile (une valeur de chaîne).
 - Références : SPEC F-7.2, F-12.5 ; DEC-0039, DEC-0045.
+
+## DEC-0050 — Taille du texte par défaut : 14 sp
+
+- Date : 08/11/2026
+- Statut : **Décidée** le 08/11/2026 (demandée par Alain) — **validation sur l'appareil à faire**
+- Contexte : F-8.1 laissait la valeur par défaut à trancher (proposition : 20 sp). Alain souhaite un texte plus petit par défaut.
+- Décision : valeur par défaut 14 sp (`DEFAULT_TEXT_SIZE` dans `domain/TextSize.kt`). Les paliers (DEC-0027) ne changent pas.
+- Justification : demande d'Alain.
+- Réversibilité : facile (une constante).
+- Références : SPEC F-8.1, DEC-0027.
