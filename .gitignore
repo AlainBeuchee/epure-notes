@@ -19,6 +19,10 @@ local.properties
 *.keystore
 keystore.properties
 
+# Bundles et APK signés pour la publication : jamais versionnés
+/app/release/
+*.aab
+
 # Kotlin : données de session locales
 /.kotlin
 
